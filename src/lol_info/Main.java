@@ -40,9 +40,14 @@ public class Main
     
     public static void main( final String argv[] ) throws Exception
     {
+        if (argv.length == 0) {
+            System.err.println( "Invalid number of arguments.\nUsage: java -jar Main <key>" );
+            throw new Exception();
+        }
+        
         createCoutryMap();
         
-        final String key = "RGAPI-3889f42e-0f89-4aff-9ec9-f8f97aa32f4d";
+        final String key = argv[0];
         final String country = COUNTRIES.get( "EUW" );
         
         long summonerId = getSummonerId( country, key );
