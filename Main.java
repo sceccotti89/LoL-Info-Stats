@@ -36,10 +36,10 @@ public class Main
     
     private static final Map<String,String> COUNTRIES = new HashMap<>( 11 );
     
-    public static void main( final String argv[] ) throws Exception
+    public static void main( String argv[] ) throws Exception
     {
         if (argv.length == 0) {
-            System.err.println( "Invalid number of arguments.\nUsage: java -jar Main <key>" );
+            System.err.println( "Invalid number of arguments: missing the API key parameter." );
             throw new Exception();
         }
         
@@ -67,7 +67,7 @@ public class Main
         COUNTRIES.put( "RU",   RUSSIA );
     }
     
-    private static long getSummonerId( final String country, final String key ) throws Exception
+    private static long getSummonerId( String country, String key ) throws Exception
     {
         final String summonerName = "TheFallenaagba";
         final String url = "https://" + country + ".api.riotgames.com/lol/summoner/v3/summoners/by-name/" + summonerName + "?api_key=" + key;
@@ -96,7 +96,7 @@ public class Main
         return result.getLong( SUMMONER_ID );
     }
     
-    private static void getSummonerRankStats( final String key, final String country, final long summonerId ) throws Exception
+    private static void getSummonerRankStats( String key, String country, long summonerId ) throws Exception
     {
         final String url = "https://" + country + ".api.riotgames.com/lol/league/v3/positions/by-summoner/" + summonerId + "?api_key=" + key;
         
